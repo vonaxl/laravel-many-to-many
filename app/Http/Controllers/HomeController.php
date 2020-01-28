@@ -47,15 +47,17 @@ class HomeController extends Controller
     }
 
     public function edit($id)
-    {
+    {   $tasks=Task::all();
         $employee=Employee::findOrFail($id);
-        return view('crud.editEmployee', compact('employee'));
+        return view('crud.editEmployee', compact('employee','tasks'));
     }
     public function update(Request $request, $id)
     {
         $data=$request->all();
         // dd($data);
         $employee=Employee::findOrFail($id);
+        $tasks=Task::find($data['tasks']);
+        $employee->tasks()->attach($tasks);
         $employee->update($data);
         return redirect() -> route('home');
     }

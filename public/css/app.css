@@ -11364,5 +11364,7 @@ a.text-dark:focus {
 .employee .tasks {
   background-color: #fff;
   border: 1px dotted black;
+  height: 5rem;
+  overflow-y: auto;
 }
 
