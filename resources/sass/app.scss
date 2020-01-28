@@ -1,0 +1,17 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+.employee {
+    border: 1px solid black;
+    background-color: rgb(240, 240, 240);
+    .tasks {
+        background-color: #fff;
+        border: 1px dotted black;
+    }
+}
