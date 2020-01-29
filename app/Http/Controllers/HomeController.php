@@ -41,8 +41,12 @@ class HomeController extends Controller
         $data=$request->all();
         // dd($data);
         $employee=Employee::create($data);
-        $tasks=Task::find($data['tasks']);
-        $employee->tasks()->attach($tasks);
+        if(isset($data["tasks"])){
+            $tasks=Task::find($data['tasks']);
+        }else{
+            $tasks=[];
+        }
+        $employee->tasks()->sync($tasks);
         return redirect() ->route('home');
     }
 
@@ -56,8 +60,12 @@ class HomeController extends Controller
         $data=$request->all();
         // dd($data);
         $employee=Employee::findOrFail($id);
-        $tasks=Task::find($data['tasks']);
-        $employee->tasks()->attach($tasks);
+        if(isset($data["tasks"])){
+            $tasks=Task::find($data['tasks']);
+        }else{
+            $tasks=[];
+        }
+        $employee->tasks()->sync($tasks);
         $employee->update($data);
         return redirect() -> route('home');
     }
